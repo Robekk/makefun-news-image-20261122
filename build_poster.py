@@ -87,9 +87,7 @@ HEROES = [
                "phase-out; it recalls Dubai 2023 instead. Its goals: electricity "
                "to 35% of final energy by 2035, a gigatonne of carbon capture, "
                "adaptation finance tripled with no baseline - and the first COP "
-               "admission that 1.5C will be overshot. Objections closed at 03:00 "
-               "GMT; the approval plenary slipped all day and by evening the "
-               "deal was still unadopted."),
+               "admission that 1.5C will be overshot."),
          src="Sources: Reuters - AP - The Guardian", art="cop"),
     dict(n=2, region="MIDDLE EAST", topic="GULF WAR", tag="CLAIM", tagc=BROWN,
          place="MANAMA, BAHRAIN", clock="GULF WAR",
@@ -104,11 +102,10 @@ HEROES = [
          place="KYIV, UKRAINE", clock="186 DRONES - 3 MISSILES",
          head="186 drones in the night: Kyiv downs or jams 161",
          body=("Russia sent 186 drones - 72 of them jet-powered Shaheds - from "
-               "18:00 Saturday; by 08:00 Sunday air defence had shot down or "
-               "electronically suppressed 161, the Air Force said. Strikes were "
-               "recorded at 18 sites; one drone destroyed a five-storey block in "
-               "Dymer, near Kyiv - up to seven people feared trapped, two "
-               "injured, nine evacuated."),
+               "18:00 Saturday; by 08:00 Sunday air defence had downed or "
+               "suppressed 161, the Air Force said. One drone destroyed a "
+               "five-storey block in Dymer, near Kyiv: up to seven people "
+               "feared trapped, two injured, nine evacuated."),
          src="Sources: Ukrainian Air Force - General Staff", art="kyiv"),
 ]
 
@@ -139,7 +136,7 @@ CARDS = [
          src="Tavanir - RFE/RL"),
     dict(n=10, region="MIDDLE EAST", topic="GAZA", art="gaza",
          head="Hamas seeks urgent talks after an aid vehicle is hit",
-         body="Three aid workers died in a drone strike on a food vehicle in Gaza City; Hamas demands emergency talks.",
+         body="Three aid workers died in Saturday's drone strike on a Gaza City food vehicle; Hamas now demands emergency talks.",
          src="Al Jazeera - Anadolu"),
     dict(n=11, region="WORLD", topic="THE HAGUE", art="court",
          head="Myanmar rejects the world court's genocide ruling as 'unfair'",
@@ -430,23 +427,23 @@ def main():
     hw = (W - 24 - 16) / 3
     for i, hz in enumerate(HEROES):
         hx = 12 + i * (hw + 8)
-        hero_art(d, hz["art"], hx, 220, hw, 88)
-        text(d, hx + 6, 290, hz["place"], F(SANS_B, 8), fill=(255, 255, 255))
-        text(d, hx + hw - 6, 290, hz["clock"], F(SANS_B, 7), fill=(255, 255, 255), anchor="ra")
-        ky = 316
+        hero_art(d, hz["art"], hx, 220, hw, 92)
+        text(d, hx + 6, 294, hz["place"], F(SANS_B, 8), fill=(255, 255, 255))
+        text(d, hx + hw - 6, 294, hz["clock"], F(SANS_B, 7), fill=(255, 255, 255), anchor="ra")
+        ky = 320
         text(d, hx, ky, f"{hz['n']} - {hz['region']} - {hz['topic']}", F(SANS_B, 8), fill=REGION_COLORS[hz["region"]])
         tw_ = d.textlength(f"{hz['n']} - {hz['region']} - {hz['topic']}", font=F(SANS_B, 8))
         rect(d, hx + tw_ / S + 6, ky - 1, 44, 12, outline=hz["tagc"], width=1)
         text(d, hx + tw_ / S + 28, ky + 1, hz["tag"], F(SANS_B, 7), fill=hz["tagc"], anchor="ma")
         hy = ky + 15
-        for ln in wrap(d, hz["head"], F(SERIF_B, 14.5), hw):
-            text(d, hx, hy, ln, F(SERIF_B, 14.5), fill=INK)
-            hy += 17
+        for ln in wrap(d, hz["head"], F(SERIF_B, 18), hw):
+            text(d, hx, hy, ln, F(SERIF_B, 18), fill=INK)
+            hy += 21
         hy += 2
-        for ln in wrap(d, hz["body"], F(SANS, 9.3), hw):
-            text(d, hx, hy, ln, F(SANS, 9.3), fill=(52, 48, 42))
-            hy += 11.2
-        text(d, hx, 468, hz["src"], F(SANS_O, 7.5), fill=FAINT)
+        for ln in wrap(d, hz["body"], F(SANS, 9.4), hw):
+            text(d, hx, hy, ln, F(SANS, 9.4), fill=(52, 48, 42))
+            hy += 11.4
+        text(d, hx, 470, hz["src"], F(SANS_O, 7.5), fill=FAINT)
         if i:
             line(d, hx - 4, 220, hx - 4, 478, fill=(200, 192, 175), width=1)
     line(d, 12, 480, W - 12, 480, fill=RULE, width=2)
