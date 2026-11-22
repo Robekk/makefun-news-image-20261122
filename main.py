@@ -105,8 +105,9 @@ HEROES = [
          body=("Russia sent 186 drones - 72 of them jet-powered Shaheds - from "
                "18:00 Saturday; by 08:00 Sunday air defence had shot down or "
                "electronically suppressed 161, the Air Force said. Strikes were "
-               "recorded at 18 sites, debris at six more, and the attack was "
-               "still under way in the morning."),
+               "recorded at 18 sites; one drone destroyed a five-storey block in "
+               "Dymer, near Kyiv - up to seven people feared trapped, two "
+               "injured, nine evacuated."),
          src="Sources: Ukrainian Air Force - General Staff", art="kyiv"),
 ]
 
@@ -143,10 +144,10 @@ CARDS = [
          head="Myanmar rejects the world court's genocide ruling as 'unfair'",
          body="The ICJ found Myanmar committed genocide against the Rohingya; rights groups press for sanctions.",
          src="Reuters - AP"),
-    dict(n=12, region="ASIA-PACIFIC", topic="TRADE", art="trade",
-         head="EU and Indonesia sign their trade deal after ten years",
-         body="The pact closes a decade of talks and cuts tariffs on most goods with Southeast Asia's largest economy.",
-         src="DW - Reuters"),
+    dict(n=12, region="WORLD", topic="THE VATICAN", art="vatican",
+         head="Pope Leo lunches with 1,300 poor guests at the Vatican",
+         body="On the tenth World Day of the Poor, 1,300 guests heard the Angelus in the Paul VI Hall, then lunched with the Pope.",
+         src="Vatican News"),
     dict(n=13, region="EUROPE", topic="TENNIS", art="tennis",
          head="Zverev meets Alcaraz in tonight's ATP Finals title match",
          body="World No.1 Zverev, unbeaten and unbroken all week, faces Alcaraz at 17:00 GMT in Turin; $5.17m awaits an undefeated champion.",
@@ -211,12 +212,13 @@ TIMELINE = [
     ("17:00", "ATP Finals final, Turin"),
 ]
 
-REGIONS = [("EUROPE", 9), ("MIDDLE EAST", 10), ("ASIA-PACIFIC", 10),
-           ("AMERICAS", 9), ("AFRICA", 4), ("OCEANIA", 4), ("WORLD", 4)]
+REGIONS = [("EUROPE", 9), ("MIDDLE EAST", 10), ("ASIA-PACIFIC", 9),
+           ("AMERICAS", 9), ("AFRICA", 4), ("OCEANIA", 4), ("WORLD", 5)]
 
 DATECHECK = ("Wires read up to 12:40 UTC, Sunday 22 November 2026: every story above was reported, or still "
              "developing, on 22 November in at least one time zone. Named as other days' news, not counted: "
-             "BepiColombo reached Mercury orbit on Saturday; England's record 37-12 rugby win and Saturday's "
+             "BepiColombo reached Mercury orbit on Saturday; the EU-Indonesia trade signing (Sat); England's "
+             "record 37-12 rugby win and Saturday's "
              "Premier League results; the Kryvyi Rih strike (Fri; 2 dead, 58 hurt, toll confirmed Sat); Friday's "
              "market close. Left out: the Shenzhen summit (19 Nov), the 404-drone barrage (19-20 Nov), the Peru "
              "quake (Fri, 6.7).")
@@ -275,7 +277,7 @@ CARD_ICON_BG = {
     "vote": (214, 224, 240), "f1": (24, 24, 30), "cricket": (198, 226, 188),
     "mexico": (226, 214, 188), "boat": (188, 216, 228), "power": (240, 226, 178),
     "gaza": (232, 208, 190), "court": (216, 210, 226), "trade": (196, 224, 214),
-    "tennis": (206, 230, 196),
+    "tennis": (206, 230, 196), "vatican": (238, 228, 200),
 }
 
 
@@ -327,6 +329,11 @@ def card_art(d, kind, x, y, w, h):
         line(d, cx + 2, cy + 4, cx + 2, cy - 12, fill=INK, width=2)
         poly(d, [(cx + 2, cy - 12), (cx + 2, cy), (cx + 13, cy)], fill=(200, 60, 50))
         text(d, cx + 16, cy - 8, "EU-IDN", F(SANS_B, 8), fill=INK, anchor="ma")
+    elif kind == "vatican":
+        d.pieslice([(cx - 13) * S, (cy - 4) * S, (cx + 13) * S, (cy + 22) * S], 180, 360, fill=(196, 164, 90), outline=INK)
+        rect(d, cx - 15, cy + 8, 30, 3, fill=INK)
+        line(d, cx, cy - 16, cx, cy - 5, fill=INK, width=2)
+        line(d, cx - 3, cy - 13, cx + 3, cy - 13, fill=INK, width=2)
     elif kind == "tennis":
         d.ellipse([(cx - 16) * S, (cy - 12) * S, (cx + 2) * S, (cy + 12) * S], outline=INK, width=2)
         line(d, cx - 2, cy + 10, cx + 10, cy + 18, fill=INK, width=3)
